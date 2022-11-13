@@ -1,4 +1,4 @@
-/* Generated on: Sun Nov 13 2022 12:32:13 GMT+0000 (Coordinated Universal Time) */
+/* Generated on: Sun Nov 13 2022 14:00:12 GMT+0000 (Coordinated Universal Time) */
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
    ========================================================================== */
@@ -354,6 +354,73 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .div-block-2 {
+    width: 85%;
+    height: 60%;
+  }
+
+  .heading-2 {
+    height: 40px;
+    font-size: 40px;
+  }
+
+  .text-block-2 {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  .columns-3 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .column-5 {
+    padding-right: 0px;
+    padding-left: 0px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .column-6 {
+    padding-right: 0px;
+    padding-left: 0px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .button-3 {
+    padding-right: 0px;
+    padding-left: 0px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 auto;
+    -ms-flex: 0 auto;
+    flex: 0 auto;
+    text-align: center;
+  }
+
+  .button-4 {
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 479px) {
   .columns {
     height: 10%;
@@ -378,7 +445,7 @@
   }
 
   .heading-2 {
-    height: 7%;
+    height: 40px;
     padding-left: 11px;
     font-size: 30px;
   }

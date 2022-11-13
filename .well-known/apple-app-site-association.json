@@ -1,0 +1,38 @@
+{
+  "applinks": {
+    "apps": [
+
+    ],
+    "details": [
+      {
+        "appID": "4K4648G6X9.com.yourdelivery.lieferando",
+        "paths": [
+          "/",
+          "/??",
+          "NOT /reset-password"
+        ]
+      },
+      {
+        "appID": "5GHURELLWP.de.asco.pizzade",
+        "paths": [
+          "/",
+          "/??"
+        ]
+      },
+      {
+        "appID": "5GHURELLWP.de.lieferheld.app",
+        "paths": [
+          "/",
+          "/??"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "4K4648G6X9.com.yourdelivery.lieferando",
+      "5GHURELLWP.de.asco.pizzade",
+      "5GHURELLWP.de.lieferheld.app"
+    ]
+  }
+}

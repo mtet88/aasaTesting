@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "y",
+    "appAssociation": "AUTO",
     "ignore": [
       "firebase.json",
       "**/.*",

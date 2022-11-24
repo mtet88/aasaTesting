@@ -28,7 +28,7 @@ function logEvent(name, params) {
       && window.webkit.messageHandlers.firebase) {
     // Call iOS interface
     var message = {
-      command: 'trackEvent',
+      command: 'analytics',
       name: name,
       parameters: params
     };

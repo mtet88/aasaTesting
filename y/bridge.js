@@ -25,7 +25,7 @@ function trackEvent(name, params) {
     window.AnalyticsWebInterface.logEvent(name, JSON.stringify(params));
   } else if (window.webkit
       && window.webkit.messageHandlers
-      && window.webkit.messageHandlers.firebase) {
+      && window.webkit.messageHandlers.analytics) {
     // Call iOS interface
     var message = {
       command: 'trackEvent',

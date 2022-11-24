@@ -16,23 +16,32 @@
 
 // [START log_event]
 function trackEvent(name, params) {
+
+  console.log("Track init");
+
   if (!name) {
+    console.log("Track out");
     return;
   }
 
+  console.log("Track handler choosing");
   if (window.AnalyticsWebInterface) {
+
+    console.log("Track android");
     // Call Android interface
     window.AnalyticsWebInterface.logEvent(name, JSON.stringify(params));
   } else if (window.webkit
       && window.webkit.messageHandlers
       && window.webkit.messageHandlers.analytics) {
+
+    console.log("Track ios");
     // Call iOS interface
     var message = {
       command: 'trackEvent',
       name: name,
       parameters: params
     };
-    window.webkit.messageHandlers.firebase.postMessage(message);
+    window.webkit.messageHandlers.analytics.postMessage(message);
   } else {
     // No Android or iOS interface found
     console.log("No native APIs found.");

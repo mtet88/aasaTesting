@@ -17,24 +17,24 @@
 /*
 function trackEvent(name, params) {
 
-  console.log("Track init");
+  triggerDebug("Track init");
 
   if (!name) {
-    console.log("Track out");
+    triggerDebug("Track out");
     return;
   }
 
-  console.log("Track handler choosing");
+  triggerDebug("Track handler choosing");
   if (window.AnalyticsWebInterface) {
 
-    console.log("Track android");
+    triggerDebug("Track android");
     // Call Android interface
     window.AnalyticsWebInterface.logEvent(name, JSON.stringify(params));
   } else if (window.webkit
       && window.webkit.messageHandlers
       && window.webkit.messageHandlers.iOSMessageHandler) {
 
-    console.log("Track ios");
+    triggerDebug("Track ios");
     // Call iOS interface
     var message = {
       command: 'trackEvent',
@@ -44,44 +44,44 @@ function trackEvent(name, params) {
     window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
   } else {
     // No Android or iOS interface found
-    console.log("No native APIs found.");
+    triggerDebug("No native APIs found.");
   }
 }
  */
 
 function trackEvent(name, params) {
 
-  console.log("[Track] Start");
+  triggerDebug("[Track] Start");
 
   if (!name) {
-    console.log("Track aborted, command name missing 🆘");
+    triggerDebug("Track aborted, command name missing 🆘");
     return;
   }
 
-  console.log("[Track] Name confirmed ✅");
+  triggerDebug("[Track] Name confirmed ✅");
 
   if (!window.webkit) {
-    console.log("Track aborted, webkit missing 🤖");
+    triggerDebug("Track aborted, webkit missing 🤖");
     return;
   }
 
-  console.log("[Track] Webkit confirmed 📱");
+  triggerDebug("[Track] Webkit confirmed 📱");
 
   if (!window.webkit.messageHandlers) {
-    console.log("Track aborted, 0 handlers found 📭");
+    triggerDebug("Track aborted, 0 handlers found 📭");
     return;
   }
 
-  console.log(window.webkit.messageHandlers);
-  console.log("Message handlers available 📲");
+  triggerDebug(window.webkit.messageHandlers);
+  triggerDebug("Message handlers available 📲");
 
   if (!window.webkit.messageHandlers.iOSMessageHandler) {
-    console.log("Track aborted, no handler name matches expected iOSMessageHandler 🧩");
+    triggerDebug("Track aborted, no handler name matches expected iOSMessageHandler 🧩");
     return;
   }
 
-  console.log("Message handler found 🙋🏾‍♂️");
-  console.log("Track from iOS triggered");
+  triggerDebug("Message handler found 🙋🏾‍♂️");
+  triggerDebug("Track from iOS triggered");
 
   // Call iOS interface
   var message = {
@@ -98,6 +98,6 @@ function triggerDebug(message) {
 }
 
 document.getElementById("event1").addEventListener("click", function() {
-    console.log("event1");
+    triggerDebug("event1");
     trackEvent("daEvent", { foo: "bar", baz: 123 });
 });

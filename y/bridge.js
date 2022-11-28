@@ -72,15 +72,15 @@ function trackEvent(name, params) {
     return;
   }
 
-  console.log(window.webkit.messageHandlers)
-  console.log("Message handlers available 📲")
+  console.log(window.webkit.messageHandlers);
+  console.log("Message handlers available 📲");
 
   if (!window.webkit.messageHandlers.iOSMessageHandler) {
     console.log("Track aborted, no handler name matches expected iOSMessageHandler 🧩");
     return;
   }
 
-  console.log("Message handler found 🙋🏾‍♂️")
+  console.log("Message handler found 🙋🏾‍♂️");
   console.log("Track from iOS triggered");
 
   // Call iOS interface
@@ -90,6 +90,11 @@ function trackEvent(name, params) {
   parameters: params
   };
   window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
+}
+
+funcion triggerDebug(message) {
+  console.log(message);
+  alert(message);
 }
 
 document.getElementById("event1").addEventListener("click", function() {

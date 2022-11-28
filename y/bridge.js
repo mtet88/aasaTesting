@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// [START log_event]
+/*
 function trackEvent(name, params) {
 
   console.log("Track init");
@@ -32,7 +32,7 @@ function trackEvent(name, params) {
     window.AnalyticsWebInterface.logEvent(name, JSON.stringify(params));
   } else if (window.webkit
       && window.webkit.messageHandlers
-      && window.webkit.messageHandlers.analytics) {
+      && window.webkit.messageHandlers.iOSMessageHandler) {
 
     console.log("Track ios");
     // Call iOS interface
@@ -41,51 +41,58 @@ function trackEvent(name, params) {
       name: name,
       parameters: params
     };
-    window.webkit.messageHandlers.analytics.postMessage(message);
+    window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
   } else {
     // No Android or iOS interface found
     console.log("No native APIs found.");
   }
 }
-// [END log_event]
+ */
 
-//// [START set_user_property]
-//function setUserProperty(name, value) {
-//  if (!name || !value) {
-//    return;
-//  }
-//
-//  if (window.AnalyticsWebInterface) {
-//    // Call Android interface
-//    window.AnalyticsWebInterface.setUserProperty(name, value);
-//  } else if (window.webkit
-//      && window.webkit.messageHandlers
-//      && window.webkit.messageHandlers.firebase) {
-//    // Call iOS interface
-//    var message = {
-//      command: 'setUserProperty',
-//      name: name,
-//      value: value
-//   };
-//    window.webkit.messageHandlers.firebase.postMessage(message);
-//  } else {
-//    // No Android or iOS interface found
-//    console.log("No native APIs found.");
-//  }
-//}
-//// [END set_user_property]
+function trackEvent(name, params) {
+
+  console.log("[Track] Start");
+
+  if (!name) {
+    console.log("Track aborted, command name missing 🆘");
+    return;
+  }
+
+  console.log("[Track] Name confirmed ✅");
+
+  if (!window.webkit) {
+    console.log("Track aborted, webkit missing 🤖");
+    return;
+  }
+
+  console.log("[Track] Webkit confirmed 📱");
+
+  if (!window.webkit.messageHandlers) {
+    console.log("Track aborted, 0 handlers found 📭");
+    return;
+  }
+
+  console.log(window.webkit.messageHandlers)
+  console.log("Message handlers available 📲")
+
+  if (!window.webkit.messageHandlers.iOSMessageHandler) {
+    console.log("Track aborted, no handler name matches expected iOSMessageHandler 🧩");
+    return;
+  }
+
+  console.log("Message handler found 🙋🏾‍♂️")
+  console.log("Track from iOS triggered");
+
+  // Call iOS interface
+  var message = {
+  command: 'trackEvent',
+  name: name,
+  parameters: params
+  };
+  window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
+}
 
 document.getElementById("event1").addEventListener("click", function() {
     console.log("event1");
     trackEvent("daEvent", { foo: "bar", baz: 123 });
 });
-
-//document.getElementById("event2").addEventListener("click", function() {
-//  console.log("event2");
-//    logEvent("event2", { size: 123.456 });
-//});
-//
-//document.getElementById("userprop").addEventListener("click", function() {
-//    console.log("userprop");
-//    setUserProperty("userprop", "custom_value");
-//});

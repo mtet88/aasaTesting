@@ -92,7 +92,7 @@ function trackEvent(name, params) {
   window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
 }
 
-funcion triggerDebug(message) {
+function triggerDebug(message) {
   console.log(message);
   alert(message);
 }

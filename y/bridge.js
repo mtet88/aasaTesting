@@ -14,41 +14,6 @@
  * limitations under the License.
  */
 
-/*
-function trackEvent(name, params) {
-
-  triggerDebug("Track init");
-
-  if (!name) {
-    triggerDebug("Track out");
-    return;
-  }
-
-  triggerDebug("Track handler choosing");
-  if (window.AnalyticsWebInterface) {
-
-    triggerDebug("Track android");
-    // Call Android interface
-    window.AnalyticsWebInterface.logEvent(name, JSON.stringify(params));
-  } else if (window.webkit
-      && window.webkit.messageHandlers
-      && window.webkit.messageHandlers.iOSMessageHandler) {
-
-    triggerDebug("Track ios");
-    // Call iOS interface
-    var message = {
-      command: 'trackEvent',
-      name: name,
-      parameters: params
-    };
-    window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
-  } else {
-    // No Android or iOS interface found
-    triggerDebug("No native APIs found.");
-  }
-}
- */
-
 function trackEvent(name, params) {
 
   triggerDebug("[Track] Start");
@@ -75,8 +40,8 @@ function trackEvent(name, params) {
   triggerDebug(window.webkit.messageHandlers);
   triggerDebug("Message handlers available 📲");
 
-  if (!window.webkit.messageHandlers.iOSMessageHandler) {
-    triggerDebug("Track aborted, no handler name matches expected iOSMessageHandler 🧩");
+  if (!window.webkit.messageHandlers.firebase) {
+    triggerDebug("Track aborted, no handler name matches expected firebase 🧩");
     return;
   }
 
@@ -89,7 +54,7 @@ function trackEvent(name, params) {
   name: name,
   parameters: params
   };
-  window.webkit.messageHandlers.iOSMessageHandler.postMessage(message);
+  window.webkit.messageHandlers.firebase.postMessage(message);
 }
 
 function triggerDebug(message) {
@@ -98,6 +63,6 @@ function triggerDebug(message) {
 }
 
 document.getElementById("event1").addEventListener("click", function() {
-    triggerDebug("event1");
-    trackEvent("daEvent", { foo: "bar", baz: 123 });
+    triggerDebug("trackWebEvent");
+    trackEvent("trackWebEvent", { foo: "bar", baz: 123 });
 });

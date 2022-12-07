@@ -40,8 +40,8 @@ function trackEvent(name, params) {
   triggerDebug(window.webkit.messageHandlers);
   triggerDebug("Message handlers available 📲");
 
-  if (!window.webkit.messageHandlers.firebase) {
-    triggerDebug("Track aborted, no handler name matches expected firebase 🧩");
+  if (!window.webkit.messageHandlers.analytics) {
+    triggerDebug("Track aborted, no handler name matches expected analytics 🧩");
     return;
   }
 
@@ -54,7 +54,7 @@ function trackEvent(name, params) {
   name: name,
   parameters: params
   };
-  window.webkit.messageHandlers.firebase.postMessage(message);
+  window.webkit.messageHandlers.analytics.postMessage(message);
 }
 
 function triggerDebug(message) {
